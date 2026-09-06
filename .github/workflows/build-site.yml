@@ -1,0 +1,26 @@
+name: build-site
+
+on:
+  push:
+    branches: [main]
+    paths: ['anotherwaltz-site/**', '.github/workflows/build-site.yml']
+  pull_request:
+    paths: ['anotherwaltz-site/**']
+
+jobs:
+  astro:
+    name: Astro build (anotherwaltz-site)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: anotherwaltz-site/package-lock.json
+      - name: Install
+        working-directory: anotherwaltz-site
+        run: npm ci
+      - name: Build
+        working-directory: anotherwaltz-site
+        run: npm run build
