@@ -1,0 +1,22 @@
+name: syntax
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python-syntax:
+    name: Python syntax gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: py_compile seluruh Python
+        run: |
+          find . -name "*.py" \
+            -not -path "*/node_modules/*" -not -path "*/.venv/*" -not -path "*/.git/*" \
+            -exec python -m py_compile {} +
+          echo "py_compile OK"
