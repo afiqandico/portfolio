@@ -1,0 +1,45 @@
+---
+import { SITE, SOCIAL } from '../consts';
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 border-t border-base-300/60 bg-base-200/40">
+  <div class="container-wide grid gap-10 py-12 md:grid-cols-3">
+    <div class="space-y-3">
+      <p class="font-display text-2xl">Another <span class="text-primary">Waltz</span></p>
+      <p class="max-w-sm text-sm text-base-content/70">{SITE.description}</p>
+      <p class="text-xs text-base-content/50">{SITE.livePlace}, Indonesia · Sejak {SITE.founded}</p>
+    </div>
+
+    <div>
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-base-content/60">Ikuti</h3>
+      <ul class="space-y-2 text-sm">
+        {SOCIAL.map(s => (
+          <li>
+            <a class="link link-hover link-underline" href={s.url} rel="noopener me" target="_blank">
+              <span class="text-base-content/70">{s.name}</span>
+              <span class="ml-1 text-base-content/40">— {s.handle}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-base-content/60">Navigasi</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="link link-hover" href="/about/">Tentang</a></li>
+        <li><a class="link link-hover" href="/works/">Karya</a></li>
+        <li><a class="link link-hover" href="/art/">Lukisan</a></li>
+        <li><a class="link link-hover" href="/blog/">Catatan</a></li>
+        <li><a class="link link-hover" href="/contact/">Kontak</a></li>
+        <li><a class="link link-hover" href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-base-300/60 py-5">
+    <div class="container-wide flex flex-col items-center justify-between gap-2 text-xs text-base-content/50 md:flex-row">
+      <p>© {year} {SITE.name} oleh {SITE.founderAlias}. Hak cipta dilindungi.</p>
+      <p>Built with Astro · Tailwind · daisyUI.</p>
+    </div>
+  </div>
+</footer>

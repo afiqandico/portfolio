@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+
+// Kategori karya
+const categories = [
+  { id: 'all', label: 'Semua' },
+  { id: 'pameran', label: 'Pameran' },
+  { id: 'musik', label: 'Musik' },
+  { id: 'lukisan', label: 'Lukisan' },
+  { id: 'tulisan', label: 'Tulisan' },
+];
+
+// Daftar karya
+const works = [
+  {
+    cat: 'pameran',
+    title: 'Pameran Tunggal — Nuanu 2026',
+    desc: 'Instalasi multimedia di Nuanu Creative City. Empat ruang, empat musim — Semi, Panas, Gugur, Dingin.',
+    img: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1200&h=800&q=80',
+    href: '/blog/dibalik-pameran-nuanu/',
+    year: '2026',
+  },
+  {
+    cat: 'musik',
+    title: 'Jimmy Flaeur — CD Album',
+    desc: 'Album kolaborasi dengan 10+ musisi. Psychedelic folk dari Bali.',
+    img: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&h=800&q=80',
+    href: '/blog/jimmy-flaeur-album/',
+    year: '2021',
+  },
+  {
+    cat: 'musik',
+    title: 'Already Dead & Livin Rockstar — CD Album',
+    desc: '13 lagu, 18 seniman dalam songbook. Album kedua Pilgrim\u2019s Records.',
+    img: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=1200&h=800&q=80',
+    href: '/blog/',
+    year: '2023',
+  },
+  {
+    cat: 'pameran',
+    title: 'Pilgrimage Worldwide Tour',
+    desc: 'Tur internasional — Jepang, LA, Taiwan. 12 karya baru dalam 3 bulan.',
+    img: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&w=1200&h=800&q=80',
+    href: '/blog/pilgrimage-tour-2024/',
+    year: '2024',
+  },
+  {
+    cat: 'lukisan',
+    title: '5 Lukisan Cat Genteng',
+    desc: 'Anger Of The Sun, Bright Blue Sky, Dance, Fake Rainbow, Flame Dance. Medium cat genteng.',
+    img: '/art/anger-of-the-sun.svg',
+    href: '/art/',
+    year: '2019–2021',
+  },
+  {
+    cat: 'tulisan',
+    title: 'Jejak Karya — Novel',
+    desc: 'Novel debut. Ruby Room Studio, Denpasar.',
+    img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&h=800&q=80',
+    href: '/blog/',
+    year: '2021',
+  },
+  {
+    cat: 'tulisan',
+    title: 'A Palette of Cultures — Buku',
+    desc: 'Katalog lukisan. The BK Village, Seminyak.',
+    img: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1200&h=800&q=80',
+    href: '/blog/',
+    year: '2023',
+  },
+];
+---
+<BaseLayout title="Karya" description="Portofolio karya Another Waltz — pameran, musik, lukisan, tulisan.">
+  <section class="container-wide py-16 md:py-24">
+    <p class="section-label">~/works</p>
+    <h1 class="font-display text-5xl sm:text-6xl">
+      Selected <em class="text-primary">works</em>.
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-base-content/75">
+      Karya yang sudah dibuat — pameran, musik, lukisan, tulisan. Filter per kategori di bawah.
+    </p>
+  </section>
+
+  <section class="container-wide pb-4">
+    <div class="flex flex-wrap gap-2">
+      {categories.map(c => (
+        <button class="btn btn-sm btn-outline" data-filter={c.id}>{c.label}</button>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-wide pb-16 md:pb-24">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="works-grid">
+      {works.map(w => (
+        <article
+          class="card-hover group flex flex-col overflow-hidden rounded-box border border-base-300/60 bg-base-200/30"
+          data-cat={w.cat}
+        >
+          <a href={w.href} class="block">
+            <div class="aspect-[4/3] overflow-hidden bg-base-300">
+              <img
+                src={w.img}
+                alt={w.title}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+          </a>
+          <div class="flex flex-1 flex-col space-y-2 p-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-mono text-[10px] uppercase tracking-widest text-primary">{w.cat}</span>
+              <span class="font-mono text-[10px] text-base-content/50">{w.year}</span>
+            </div>
+            <h3 class="font-display text-lg leading-tight">{w.title}</h3>
+            <p class="text-sm text-base-content/70">{w.desc}</p>
+            <div class="mt-auto flex items-center justify-between pt-3 text-xs">
+              <span class="text-base-content/50">{w.year}</span>
+              <a href={w.href} class="font-mono text-primary hover:underline">Lihat →</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const buttons = document.querySelectorAll('[data-filter]');
+      const grid = document.getElementById('works-grid');
+      if (!buttons.length || !grid) return;
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          buttons.forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline'); });
+          btn.classList.add('btn-primary'); btn.classList.remove('btn-outline');
+          grid.querySelectorAll('[data-cat]').forEach(item => {
+            item.style.display = (filter === 'all' || item.getAttribute('data-cat') === filter) ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

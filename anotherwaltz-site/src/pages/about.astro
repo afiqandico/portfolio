@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, TIMELINE } from '../consts';
+
+// Biodata
+const biografi = [
+  'Lahir di Situbondo, 9 Juli 2001.',
+  'Tinggal di Denpasar Utara, Bali sejak usia 1–2 tahun.',
+  'Lulusan S1 Sistem Informasi ITB STIKOM Bali (yudisium 5 Juli 2026).',
+  'IT Support @ Cube Cafe Jimbaran.',
+];
+
+const tulisan = [
+  { tahun: 2023, judul: 'A Palette of Cultures', jenis: 'Buku', tempat: 'The BK Village, Seminyak' },
+  { tahun: 2022, judul: 'On The Shore', jenis: 'Buku Puisi', tempat: 'Ruby Room Studio, Canggu' },
+  { tahun: 2022, judul: 'Mini Magazine "[1982/01]"', jenis: 'Majalah', tempat: 'Ruby Room Studio, Canggu' },
+  { tahun: 2021, judul: 'Jejak Karya', jenis: 'Novel', tempat: 'Ruby Room Studio, Denpasar' },
+];
+
+const lukisan = [
+  { judul: 'Anger Of The Sun', size: '70x60 cm' },
+  { judul: 'Bright Blue Sky', size: '90x60 cm' },
+  { judul: 'Dance', size: '70x60 cm' },
+  { judul: 'Fake Rainbow', size: '70x60 cm' },
+  { judul: 'Flame Dance', size: '100x100 cm' },
+];
+
+const albums = [
+  { tahun: 2023, judul: 'Already Dead & Livin Rockstar', catatan: 'CD Album · 13 lagu · 18 seniman' },
+  { tahun: 2021, judul: 'Jimmy Flaeur', catatan: 'CD Album · 10+ musisi' },
+];
+
+const pameran = [
+  { tahun: '2026', judul: 'Nuanu — Bali', tempat: 'Nuanu Creative City (Juni)' },
+  { tahun: '2024', judul: 'Pilgrimage Worldwide Tour', tempat: 'Jepang, LA, Taiwan' },
+  { tahun: '2023', judul: 'Pilgrimage — TAT Art Space', tempat: 'Denpasar' },
+  { tahun: '2023', judul: 'AUTUMN/pilgrimage', tempat: 'ITB STIKOM Bali Hall' },
+  { tahun: '2023', judul: 'Pilgrimage TOUR JP 23', tempat: 'Tokyo & Kyoto' },
+  { tahun: '2022', judul: "There's No Fucking Words", tempat: 'Siku Coffee, Denpasar' },
+  { tahun: '2022', judul: 'NAIVE', tempat: 'Kintamani, Bali' },
+];
+---
+<BaseLayout
+  title="Tentang"
+  description="Tentang Another Waltz — kolektif seni kecil dari Bali milik Ruby Rubhin (Afiq Andico Pangimpian). Musik, lukis, foto, tulisan."
+>
+  <!-- INTRO -->
+  <section class="container-wide py-16 md:py-24">
+    <div class="grid gap-12 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <p class="section-label">Tentang</p>
+        <h1 class="font-display text-4xl leading-tight sm:text-5xl md:text-6xl">
+          Nama saya <em class="text-primary">Ruby</em>.<br />
+          Ini kolektif saya.
+        </h1>
+        <div class="prose-waltz mt-8">
+          <p>
+            Saya <strong>Afiq Andico Pangimpian</strong> — di dunia seni dipanggil <strong>{SITE.founderAlias}</strong>. {biografi[0]} {biografi[1]} {biografi[2]} {biografi[3]}
+          </p>
+          <p>
+            {SITE.name} adalah kolektif kecil yang saya mulai tahun 2019 — dari melukis di pojok kamar, sekarang merambah ke musik, fotografi, dan tulisan. Tapi semuanya berawal dari keyakinan yang sama: <em>seni yang jujur selalu menemukan jalannya sendiri</em>.
+          </p>
+          <p>
+            Nama <em>{SITE.name}</em> muncul bukan karena kami gemar menari. Waltz di sini adalah irama — tiga ketukan yang harus diisi dengan sesuatu yang hidup, bukan sekadar hitungan. <em>Another</em> adalah pengakuan bahwa selalu ada cara lain, irama lain, langkah lain.
+          </p>
+          <p>
+            Kami tidak mengejar kesempurnaan. Kami mengejar <strong>kejujuran</strong>, <strong>kehadiran</strong>, dan <strong>percakapan</strong>. Kalau kamu merasakan hal yang sama saat membaca ini — selamat, mungkin kita sudah waltz bareng.
+          </p>
+        </div>
+      </div>
+
+      <aside class="md:col-span-5">
+        <div class="sticky top-24 space-y-4">
+          <div class="overflow-hidden rounded-box border border-base-300/60">
+            <img
+              src="https://images.unsplash.com/photo-1521120098171-6e2185a35b9c?auto=format&fit=crop&w=900&h=1100&q=80"
+              alt="Potret Ruby Rubhin di studio"
+              class="aspect-[4/5] w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div class="rounded-box border border-base-300/60 bg-base-200/40 p-5 text-sm">
+            <dl class="grid grid-cols-2 gap-3">
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-base-content/50">Nama</dt>
+                <dd class="font-medium">Ruby Rubhin</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-base-content/50">Berasal</dt>
+                <dd class="font-medium">Bali, ID</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-base-content/50">Sejak</dt>
+                <dd class="font-medium">{SITE.founded}</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-base-content/50">Fokus</dt>
+                <dd class="font-medium">Musik · Lukis · Foto</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FILOSOFI -->
+  <section class="bg-base-200/30 py-16 md:py-24">
+    <div class="container-wide">
+      <p class="section-label">Filosofi</p>
+      <h2 class="mb-10 max-w-2xl font-display text-3xl sm:text-4xl">
+        Tiga ketukan waltz kami.
+      </h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {[
+          { n: '01', t: 'Kejujuran', d: 'Tidak ada estetika yang cukup kuat menyelamatkan karya yang tidak jujur. Kami memilih bentuk sesuai kebutuhan, bukan sebaliknya.' },
+          { n: '02', t: 'Kehadiran', d: 'Di tengah kebisingan, kami memilih hadir sepenuhnya — di studio, di panggung, di percakapan. Pelan, tapi utuh.' },
+          { n: '03', t: 'Percakapan', d: 'Seni bukan monolog. Setiap karya adalah ajakan bicara — dengan penonton, dengan teman, dengan tempat kami berpijak.' },
+        ].map(p => (
+          <div class="card-hover rounded-box border border-base-300/60 bg-base-100 p-6">
+            <p class="font-display text-3xl text-primary">{p.n}</p>
+            <h3 class="mt-2 font-display text-xl">{p.t}</h3>
+            <p class="mt-2 text-sm text-base-content/70">{p.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="container-wide py-16 md:py-24">
+    <p class="section-label">~/timeline</p>
+    <h2 class="mb-10 font-display text-3xl sm:text-4xl">Perjalanan.</h2>
+    <ol class="relative space-y-6 border-l border-base-300/60 pl-6">
+      {TIMELINE.map(t => (
+        <li class="relative">
+          <span class="absolute -left-[31px] top-1.5 inline-block h-3 w-3 rounded-full bg-primary ring-4 ring-base-100"></span>
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-display text-xl">{t.event}</h3>
+            <span class="text-xs uppercase tracking-widest text-base-content/50">{t.year}</span>
+          </div>
+          <span class="mt-2 inline-block rounded-full border border-base-300/60 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-base-content/60">
+            {t.tag}
+          </span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- PAMERAN -->
+  <section class="border-y border-base-300/60 bg-base-200/30 py-16 md:py-24">
+    <div class="container-wide">
+      <p class="section-label">Pameran</p>
+      <h2 class="mb-10 font-display text-3xl sm:text-4xl">Pameran tunggal & tur.</h2>
+      <div class="overflow-x-auto rounded-box border border-base-300/60">
+        <table class="table">
+          <thead>
+            <tr><th>Tahun</th><th>Judul</th><th>Tempat</th></tr>
+          </thead>
+          <tbody>
+            {pameran.map(p => (
+              <tr>
+                <td class="font-mono text-sm">{p.tahun}</td>
+                <td class="font-medium">{p.judul}</td>
+                <td class="text-sm text-base-content/70">{p.tempat}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIK -->
+  <section class="container-wide py-16 md:py-24">
+    <p class="section-label">Musik</p>
+    <h2 class="mb-10 font-display text-3xl sm:text-4xl">Album.</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      {albums.map(a => (
+        <div class="rounded-box border border-base-300/60 bg-base-200/30 p-6">
+          <p class="font-mono text-xs uppercase tracking-widest text-primary">{a.tahun}</p>
+          <h3 class="mt-2 font-display text-2xl">{a.judul}</h3>
+          <p class="mt-2 text-sm text-base-content/70">{a.catatan}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-6 text-sm text-base-content/70">
+      Selengkapnya di <a href="https://instagram.com/pilgrims.records" class="link-underline text-primary">@pilgrims.records</a>.
+    </p>
+  </section>
+
+  <!-- TULISAN -->
+  <section class="border-y border-base-300/60 bg-base-200/30 py-16 md:py-24">
+    <div class="container-wide">
+      <p class="section-label">Bibliografi</p>
+      <h2 class="mb-10 font-display text-3xl sm:text-4xl">Karya tulis.</h2>
+      <div class="overflow-x-auto rounded-box border border-base-300/60">
+        <table class="table">
+          <thead>
+            <tr><th>Tahun</th><th>Judul</th><th>Jenis</th><th>Tempat</th></tr>
+          </thead>
+          <tbody>
+            {tulisan.map(t => (
+              <tr>
+                <td class="font-mono text-sm">{t.tahun}</td>
+                <td class="font-medium">{t.judul}</td>
+                <td><span class="badge badge-ghost">{t.jenis}</span></td>
+                <td class="text-sm text-base-content/70">{t.tempat}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUKISAN -->
+  <section class="container-wide py-16 md:py-24">
+    <p class="section-label">Lukisan</p>
+    <h2 class="mb-3 font-display text-3xl sm:text-4xl">Beberapa karya di kanvas.</h2>
+    <p class="mb-6 max-w-2xl text-base-content/70">
+      Medium favorit: cat genteng, mixed media, instalasi, kolase. Pendekatan organik, spontan, menggabungkan tulisan dan lukisan.
+    </p>
+    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {lukisan.map(l => (
+        <div class="card-hover rounded-box border border-base-300/60 bg-base-200/30 p-5">
+          <p class="font-display text-lg">{l.judul}</p>
+          <p class="mt-1 text-xs uppercase tracking-widest text-base-content/50">{l.size}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-6 text-sm">
+      <a href="/art/" class="link-underline text-primary">Lihat semua 5 lukisan →</a>
+    </p>
+  </section>
+</BaseLayout>

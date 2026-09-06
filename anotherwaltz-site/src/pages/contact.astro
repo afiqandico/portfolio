@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SOCIAL, SITE } from '../consts';
+---
+<BaseLayout title="Kontak" description="Hubungi Another Waltz — terbuka untuk kolaborasi, residensi, pertunjukan, dan percakapan.">
+  <section class="container-wide py-16 md:py-20">
+    <p class="section-label">Kontak</p>
+    <h1 class="font-display text-5xl sm:text-6xl">
+      Ayo <em class="text-primary">waltz</em> bareng.
+    </h1>
+    <p class="mt-4 max-w-2xl text-base-content/70">
+      Ide mentah pun boleh. Sinyal kecil juga kami dengar. Form di bawah cara paling mudah — atau langsung sambangi kami di platform sosial berikut.
+    </p>
+  </section>
+
+  <section class="container-wide grid gap-10 pb-20 md:grid-cols-5">
+    <form
+      action="https://formspree.io/f/your-form-id"
+      method="POST"
+      class="md:col-span-3 space-y-4 rounded-box border border-base-300/60 bg-base-200/30 p-6 md:p-8"
+      aria-label="Form kontak"
+    >
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="form-control">
+          <span class="label-text mb-1 text-sm">Nama</span>
+          <input type="text" name="name" required minlength="2" class="input input-bordered w-full" placeholder="Siapa namamu?" />
+        </label>
+        <label class="form-control">
+          <span class="label-text mb-1 text-sm">Email</span>
+          <input type="email" name="email" required class="input input-bordered w-full" placeholder="kamu@email.id" />
+        </label>
+      </div>
+
+      <label class="form-control">
+        <span class="label-text mb-1 text-sm">Subjek</span>
+        <select name="subject" class="select select-bordered w-full">
+          <option>Kolaborasi karya</option>
+          <option>Undangan pameran / pertunjukan</option>
+          <option>Media &amp; wawancara</option>
+          <option>Pesan singkat / sapa</option>
+          <option>Lainnya</option>
+        </select>
+      </label>
+
+      <label class="form-control">
+        <span class="label-text mb-1 text-sm">Pesan</span>
+        <textarea name="message" required rows="6" class="textarea textarea-bordered w-full" placeholder="Ceritakan sedikit tentang ide / pertanyaanmu…"></textarea>
+      </label>
+
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <p class="text-xs text-base-content/50">
+          Kami balas dalam 2–4 hari kerja. Ganti <code class="rounded bg-base-200 px-1">your-form-id</code> dengan ID Formspree.
+        </p>
+        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+      </div>
+    </form>
+
+    <aside class="md:col-span-2 space-y-6">
+      <div class="rounded-box border border-base-300/60 bg-base-200/30 p-6">
+        <h2 class="mb-3 font-display text-xl">Langsung</h2>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href={`mailto:${SITE.email}`} class="link link-underline break-all">
+              {SITE.email}
+            </a>
+          </li>
+          {SOCIAL.slice(0, 4).map(s => (
+            <li>
+              <a class="link link-hover link-underline" href={s.url} target="_blank" rel="noopener me">
+                <span class="font-medium">{s.name}</span>
+                <span class="ml-1 text-base-content/50">— {s.handle}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="rounded-box border border-base-300/60 bg-gradient-to-br from-primary/15 to-secondary/15 p-6 text-sm">
+        <h2 class="mb-2 font-display text-lg">Berbasis di</h2>
+        <p class="text-base-content/75">
+          Ruby Room Studio<br />
+          Canggu, Bali — Indonesia<br />
+          <span class="text-base-content/55">Buka dengan janji temu.</span>
+        </p>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>
