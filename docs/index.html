@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Afiq Andico Pangimpian</title>
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --fg:#e8eaf0; --muted:#9aa3b2; --accent:#4c72b0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--fg); font-family:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height:1.55; padding:2.4rem 1.2rem; }
+  main { max-width:960px; margin:0 auto; }
+  h1 { font-size:1.6rem; letter-spacing:.3px; }
+  p.lede { color:var(--muted); margin:.5rem 0 2rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
+  a.card { display:block; background:var(--card); border:1px solid #23272f; border-radius:12px; padding:1.1rem 1.2rem; text-decoration:none; color:inherit; transition:border-color .15s, transform .15s; }
+  a.card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .tag { display:inline-block; font-size:.72rem; color:var(--accent); border:1px solid #314468; padding:.1rem .45rem; border-radius:999px; margin-bottom:.5rem; }
+  .name { font-weight:600; }
+  .desc { color:var(--muted); font-size:.9rem; margin-top:.3rem; }
+  footer { margin-top:2.5rem; color:var(--muted); font-size:.85rem; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Portfolio</h1>
+  <p class="lede">Kumpulan proyek portofolio — AI, machine learning, web, dan riset. Kode lengkap di subfolder masing-masing.</p>
+  <div class="grid">
+    <a class="card" href="signbridge-ai/"><span class="tag">Computer Vision · AI</span><div class="name">SignBridge AI</div><div class="desc">Penerjemah bahasa isyarat BISINDO real-time.</div></a>
+    <a class="card" href="itb-stkom-research/"><span class="tag">Data Science</span><div class="name">ITB STIKOM Research</div><div class="desc">Optimasi manajemen kampus via klasifikasi (Orange).</div></a>
+    <a class="card" href="inji-cho/"><span class="tag">Web · GIS</span><div class="name">Inji-cho</div><div class="desc">Katalog kuil dengan Leaflet + Vite.</div></a>
+    <a class="card" href="anotherwaltz-site/"><span class="tag">Web · Studio</span><div class="name">Another Waltz</div><div class="desc">Situs art collective Bali (Astro).</div></a>
+    <a class="card" href="lstm-partial-reset/"><span class="tag">Deep Learning</span><div class="name">LSTM Partial Reset</div><div class="desc">4 eksperimen periodic reset pada LSTM/GRU.</div></a>
+    <a class="card" href="ml-business-portfolio/"><span class="tag">ML · Bisnis</span><div class="name">ML Business</div><div class="desc">Fraud detection, analitik kafe, streaming sentiment.</div></a>
+    <a class="card" href="portfolio-showcase/"><span class="tag">Showcase</span><div class="name">Showcase</div><div class="desc">Demo ML, security, web, embedded &amp; GIS.</div></a>
+  </div>
+  <footer>© 2026 Afiq Andico Pangimpian · MIT License · <a href="https://github.com/afiqandico">github.com/afiqandico</a></footer>
+</main>
+</body>
+</html>
